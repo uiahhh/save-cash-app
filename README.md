@@ -9,7 +9,7 @@ This app is ready to be published in the store, through encapsulation by Cordova
 [Access save-cash-app in firebase host](https://save-cash-app.firebaseapp.com)
 
 ## Screens
-(screens/01.png) (screens/02.png) (screens/03.png)
+<img src="https://raw.githubusercontent.com/uiahhh/save-cash-app/master/screens/02.png" width="33%">   <img src="https://raw.githubusercontent.com/uiahhh/save-cash-app/master/screens/01.png" width="33%">   <img src="https://raw.githubusercontent.com/uiahhh/save-cash-app/master/screens/03.png" width="33%">
 
 ## What you will find here
 
