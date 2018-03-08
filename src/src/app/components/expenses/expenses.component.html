@@ -1,0 +1,85 @@
+<!-- floating buttom -->
+<div *ngIf="categoryType != 'day'" class="fixed-action-btn" style="bottom: 90px;">
+    <a (click)="copyNextMonth()" class="waves-effect btn-large btn-floating green"><i class="large material-icons">content_copy</i></a>
+</div>
+
+
+<!-- menu do topo -->
+<nav class="primary-color lighten-1 subnav" role="navigation">
+    <div class="nav-wrapper container" style="width: 100%;">
+      <ul class="right" >
+        <li><a (click)="prevMonth()"><i class="material-icons">navigate_before</i></a></li>
+        <li>
+            <div style="font-weight: bold;">                            
+                <i>{{ this.categoryType != 'year' ? months[month - 1] : '' }}<span class="secondary-text">{{ year }}</span></i>
+            </div>  
+        </li>
+        <li><a (click)="nextMonth()"><i class="material-icons">navigate_next</i></a></li>
+      </ul>
+    </div>
+  </nav>
+
+
+<app-crud #crud [form]="form" [collection]="collection" [filter]="filter" [sort]="sort">
+    
+  <!-- form -->
+  <form novalidate [formGroup]="form">
+      
+    <div class="input-field col s12">      
+      <select-control class="input-field" [options]="categoryItems" formControlName="category" optionLabel="name">
+          <i class="material-icons prefix">book</i>
+      </select-control>
+    </div>  
+
+    <div class="input-field col s12">
+      <i class="material-icons prefix">create</i>
+      <input  formControlName="text" type="text">
+    </div>
+
+    <div class="input-field col s12">
+      <i class="material-icons prefix">attach_money</i>
+      <input  formControlName="value" type="number">
+    </div>  
+
+    <div class="input-field col s12">      
+        <select-control class="input-field" [options]="walletItems" formControlName="wallet" optionLabel="name">
+            <i class="material-icons prefix">style</i>
+        </select-control>
+    </div>  
+
+    <div class="input-field col s12">
+      <i class="material-icons prefix">date_range</i>
+      <input  formControlName="date" type="date">   
+       <!-- min="2018-01-01"  max="2018-01-31" -->
+      <!-- valor da data nao esta indo para o form do angular, deve ser algo relacionado ao set value -->
+      <!-- <input #expenseDate formControlName="date" type="text" class="datepicker"> -->
+    </div>  
+
+  </form>
+
+  <!-- <pre>{{ this.form.value.category | json }}</pre> -->
+
+    <!-- card content -->
+  <div *cardItem="let item">
+    <div class="card-content"> 
+
+    <div>
+      {{ item.text }}  
+      <span class="new badge dark-text"  data-badge-caption="" style="position: absolute;right: 20px;">
+        R$ {{item.value}}
+      </span>
+    </div>
+
+    <br clear>
+
+    <div style="margin-top: -15px;font-size: 12px;"> 
+      {{ item.category?.name }}  
+      <span class="new badge dark-text"  data-badge-caption="" style="position: absolute;right: 20px;">
+        {{ formatDate(item.date) }}
+      </span>
+    </div>
+
+    </div>  
+  </div>  
+
+</app-crud>

@@ -1,0 +1,21 @@
+
+<app-crud [form]="form" collection="wallets">
+
+  <!-- form -->
+  <form novalidate [formGroup]="form">
+
+    <div class="input-field col s12">
+      <input  formControlName="name" type="text">
+      <label for="name">Name</label>
+    </div>
+
+  </form>
+
+   <!-- card content -->
+  <div *cardItem="let item">
+    <div class="card-content">  
+      {{item.name}}
+    </div>  
+  </div>  
+
+</app-crud>

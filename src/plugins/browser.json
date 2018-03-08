@@ -1,0 +1,35 @@
+{
+    "prepare_queue": {
+        "installed": [],
+        "uninstalled": []
+    },
+    "config_munge": {
+        "files": {}
+    },
+    "installed_plugins": {
+        "cordova-plugin-whitelist": {
+            "PACKAGE_NAME": "com.ricardoac.savecash"
+        },
+        "cordova-plugin-buildinfo": {
+            "PACKAGE_NAME": "com.ricardoac.savecash"
+        },
+        "cordova-universal-links-plugin": {
+            "PACKAGE_NAME": "com.ricardoac.savecash"
+        },
+        "cordova-plugin-browsertab": {
+            "PACKAGE_NAME": "com.ricardoac.savecash"
+        },
+        "cordova-plugin-inappbrowser": {
+            "PACKAGE_NAME": "com.ricardoac.savecash"
+        },
+        "cordova-plugin-customurlscheme": {
+            "URL_SCHEME": "com.firebase.cordova",
+            "PACKAGE_NAME": "com.ricardoac.savecash"
+        }
+    },
+    "dependent_plugins": {
+        "cordova-plugin-compat": {
+            "PACKAGE_NAME": "com.ricardoac.savecash"
+        }
+    }
+}

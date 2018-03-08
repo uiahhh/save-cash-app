@@ -1,0 +1,59 @@
+<nav class="primary-color lighten-1" role="navigation" style="position: fixed;top: 0px;z-index: 990;">
+  <div class="nav-wrapper container" style="width: 100%;">
+
+    <!-- usado quando não é mobile -->
+    <ul class="right hide-on-med-and-down">
+        <ng-template ngFor let-i="index" let-navLink [ngForOf]="navLinks">
+            <li *ngIf="index > 0"><div class="divider"></div></li>
+            <li><a [routerLink]="[navLink.route]" >{{navLink.name}}</a></li>
+        </ng-template>
+      </ul>
+
+    <a #menuicon href="#" data-activates="slide-out" class="button-collapse"><i class="material-icons">menu</i></a>
+  </div>
+</nav>
+
+<!-- menu mobile retratil -->
+<ul id="slide-out" class="side-nav" style="z-index: 999;">
+    <li>
+      <div class="user-view">
+        <div class="background">
+          <img src="assets/1-4.jpg">
+        </div>
+        <a href="#!user"><img class="circle" [src]="userPhotoUrl"></a>
+        <a href="#!name"><span class="white-text name">{{userName}}</span></a>
+        <a href="#!email"><span class="white-text email">{{userEmail}}</span></a>
+      </div>
+    </li>
+    <ng-template ngFor let-i="index" let-navLink [ngForOf]="navLinks">        
+        <li><a [routerLink]="[navLink.route]" ><i class="material-icons">{{navLink.icon}}</i>{{navLink.name}}</a></li>
+        <li><div class="divider"></div></li>
+    </ng-template>
+
+    <li><a (click)="logout()" ><i class="material-icons">exit_to_app</i>Sair</a></li>
+    <li><div class="divider"></div></li>
+    <li style="text-align: center; font-size: 10px">  {{ version }}</li>
+
+    <!-- 
+    <li><a href="#!">Second Link</a></li>
+    <li><div class="divider"></div></li>
+    <li><a class="subheader">Subheader</a></li>
+    <li><a class="waves-effect" href="#!">Third Link With Waves</a></li>
+    <li class="no-padding">
+        <ul class="collapsible collapsible-accordion">
+          <li>
+            <a class="collapsible-header">Dropdown<i class="material-icons">arrow_drop_down</i></a>
+            <div class="collapsible-body">
+              <ul>
+                <li><a href="#!">First</a></li>
+                <li><a href="#!">Second</a></li>
+                <li><a href="#!">Third</a></li>
+                <li><a href="#!">Fourth</a></li>
+              </ul>
+            </div>
+          </li>
+        </ul>
+      </li> 
+    -->
+  </ul>
+

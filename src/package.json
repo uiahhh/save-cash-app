@@ -1,0 +1,86 @@
+{
+    "name": "com.ricardoac.savecash",
+    "displayName": "SaveCache",
+    "version": "1.0.4",
+    "description": "Controle financeiro.",
+    "main": "index.js",
+    "license": "Apache-2.0",
+    "scripts": {
+        "ng": "ng",
+        "start": "ng serve",
+        "build": "ng build --prod",
+        "test": "ng test",
+        "lint": "ng lint",
+        "e2e": "ng e2e",
+        "deploy": "ng build --prod && firebase deploy && cordova build android"
+    },
+    "private": true,
+    "dependencies": {
+        "@angular/animations": "^5.2.0",
+        "@angular/common": "^5.2.0",
+        "@angular/compiler": "^5.2.0",
+        "@angular/core": "^5.2.0",
+        "@angular/forms": "^5.2.0",
+        "@angular/http": "^5.2.0",
+        "@angular/platform-browser": "^5.2.0",
+        "@angular/platform-browser-dynamic": "^5.2.0",
+        "@angular/router": "^5.2.0",
+        "@angular/service-worker": "^5.2.2",
+        "angularfire2": "^5.0.0-rc.6",
+        "cordova-android": "^7.0.0",
+        "cordova-plugin-browsertab": "^0.2.0",
+        "cordova-plugin-buildinfo": "^2.0.1",
+        "cordova-plugin-compat": "^1.0.0",
+        "cordova-plugin-customurlscheme": "^4.3.0",
+        "cordova-plugin-inappbrowser": "^2.0.2",
+        "cordova-plugin-whitelist": "^1.3.3",
+        "cordova-universal-links-plugin": "^1.2.1",
+        "core-js": "^2.4.1",
+        "firebase": "^4.9.0",
+        "jquery": "^3.2.1",
+        "materialize-css": "^0.100.2",
+        "moment": "^2.20.1",
+        "rxjs": "^5.5.6",
+        "zone.js": "^0.8.19"
+    },
+    "devDependencies": {
+        "@angular/cli": "1.6.5",
+        "@angular/compiler-cli": "^5.2.0",
+        "@angular/language-service": "^5.2.0",
+        "@types/jasmine": "~2.8.3",
+        "@types/jasminewd2": "~2.0.2",
+        "@types/jquery": "^3.2.1",
+        "@types/node": "~6.0.60",
+        "codelyzer": "^4.0.1",
+        "jasmine-core": "~2.8.0",
+        "jasmine-spec-reporter": "~4.2.1",
+        "karma": "~2.0.0",
+        "karma-chrome-launcher": "~2.2.0",
+        "karma-cli": "~1.0.1",
+        "karma-coverage-istanbul-reporter": "^1.2.1",
+        "karma-jasmine": "~1.1.0",
+        "karma-jasmine-html-reporter": "^0.2.2",
+        "protractor": "~5.1.2",
+        "ts-node": "~4.1.0",
+        "tslint": "~5.9.1",
+        "typescript": "~2.5.3"
+    },
+    "cordova": {
+        "plugins": {
+            "cordova-plugin-whitelist": {},
+            "cordova-plugin-buildinfo": {},
+            "cordova-universal-links-plugin": {},
+            "cordova-plugin-browsertab": {},
+            "cordova-plugin-inappbrowser": {},
+            "cordova-plugin-customurlscheme": {
+                "URL_SCHEME": "com.firebase.cordova",
+                "ANDROID_SCHEME": " ",
+                "ANDROID_HOST": " ",
+                "ANDROID_PATHPREFIX": "/"
+            }
+        },
+        "platforms": [
+            "android"
+        ]
+    }
+}

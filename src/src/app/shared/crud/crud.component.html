@@ -1,0 +1,31 @@
+<!-- floating buttom -->
+<div class="fixed-action-btn">
+    <a (click)="createItem()" *ngIf="!itemSelected" class="waves-effect btn-large btn-floating green"><i class="large material-icons">add</i></a>
+    <!-- posicionar botao de remover em cima do botao de alterar, pra dar espaco para propaganda -->
+    <a (click)="deleteItem()" *ngIf="itemSelected" class="waves-effect btn-large btn-floating red"><i class="large material-icons">remove</i></a>
+    <a (click)="editItem()" *ngIf="itemSelected" class="waves-effect btn-large btn-floating blue" style="margin-left: 15px;"><i class="large material-icons">edit</i></a>
+</div>
+
+<!-- modal -->
+<div #itemModal class="modal">
+  <div class="modal-content">
+    
+      <ng-content ></ng-content>
+
+  </div>
+  <div class="modal-footer">
+      <a (click)="save()" *ngIf="isCreate" class="waves-effect waves-light btn green">Cadastrar</a>
+      <a (click)="save()" *ngIf="isDelete" class="waves-effect waves-light btn red">Excluir</a>
+      <a (click)="save()" *ngIf="isEdit" class="waves-effect waves-light btn blue">Alterar</a>
+  </div>
+</div>
+
+<!-- listar items -->
+<div class="card card-row" 
+[ngClass]="{'secondary-color-light' : itemSelected == item}"
+(click)="selectItem(item)"
+*ngFor="let item of items" >   
+
+    <ng-container *ngTemplateOutlet="cardItemTemplate; context: {$implicit: item}"></ng-container>
+
+</div>

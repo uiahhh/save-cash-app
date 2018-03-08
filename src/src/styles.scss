@@ -1,0 +1,96 @@
+/* You can add global styles to this file, and also import other style files */
+
+
+$roboto-font-path: "~materialize-css/dist/fonts/roboto/" !default;
+
+@import "~materialize-css/sass/components/color";
+
+//default values
+//@import "~materialize-css/sass/components/variables";
+
+//color reference: http://materializecss.com/color.html
+
+$primary-color: color("blue-grey", "darken-2") !default;
+$primary-color-light: lighten($primary-color, 25%) !default;
+$primary-color-dark: darken($primary-color, 25%) !default;
+
+$secondary-color: color("amber", "lighten-1") !default;
+$secondary-color-light: lighten($secondary-color, 25%) !default;
+$secondary-color-dark: darken($secondary-color, 25%) !default;
+
+$success-color: color("green", "base") !default;
+$error-color: color("red", "base") !default;
+$link-color: color("light-blue", "darken-1") !default;
+
+@import '~materialize-css/sass/materialize.scss';
+
+.primary-color{  background-color: $primary-color !important;}
+.primary-color-light{  background-color: $primary-color-light !important;}
+.primary-color-dark{  background-color: $primary-color-dark !important;}
+
+.secondary-color{  background-color: $secondary-color !important;}
+.secondary-color-light{  background-color: $secondary-color-light !important;}
+.secondary-color-dark{  background-color: $secondary-color-dark !important;}
+
+.dark-text {  color: $primary-color !important;}
+.secondary-text { color: $secondary-color !important;}
+
+body {
+    height: 100%;
+    margin: 0;
+    padding-top: 60px; //por causa do menu fixo
+  }
+
+.modal {
+    width: 90%;
+}
+
+.input-field.col label {
+    margin-left: -12px !important;
+}
+
+.input-field {
+    margin-top: 5px;
+    margin-bottom: -10px;
+}
+
+.card-row {
+    margin-left: 10px;
+    margin-right: 10px;
+}
+
+.card-expense {
+    padding: 10px !important;
+    text-transform: uppercase;
+    font-size: 12px;
+}
+
+nav .nav-wrapper {
+    margin: 0px;
+}
+
+.side-nav li > a {
+    padding: 0 16px;
+}
+
+.subnav {
+    position: fixed;
+    top: 0px;
+    z-index: 991;
+    width: calc(100% - 60px);
+    right: 0px;
+} 
+
+.side-nav .divider {
+    margin: 0;
+    // margin: 4px 0 4px 0;
+}
+
+.login {
+    position: absolute;
+    width: 100%;
+    text-align: center;
+    bottom: 100px;
+    color: #FFF;
+    font-size: 12px;
+}

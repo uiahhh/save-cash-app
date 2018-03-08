@@ -1,0 +1,89 @@
+
+<app-crud [form]="form" collection="categories">
+    
+  <!-- form -->
+  <form novalidate [formGroup]="form">
+
+    <div class="input-field col s12">
+      <input  formControlName="name" type="text">
+      <label for="name">Nome</label>
+    </div>
+
+    <div class="input-field col s12">
+      <input  formControlName="goalMonthly" type="number">
+      <label for="goalMonthly">Meta Mensal</label>
+    </div>  
+
+    <div class="input-field col s12">
+        <input  formControlName="sort" type="number">
+        <label for="goalMonthly">Ordem</label>
+      </div>  
+
+    <!-- <div class="switch">
+        <label>
+          
+          <input  formControlName="fixed" type="checkbox">
+          <span class="lever"></span>
+          Despesa/Receita fixa
+        </label>
+      </div> -->
+
+      <div class="switch" style="margin-top: 17px;">
+          <label>
+            
+            <input  formControlName="isIncome" type="checkbox">
+            <span class="lever"></span>
+            É Receita
+          </label>
+        </div>
+
+        <div class="input-field col s12" style="margin-bottom: 40px;">
+          <div style="width: 100%; float: left">
+            Tipo de Despesa/Receita:
+          </div>
+          <div style="width: 33%; float: left">
+            <input type="radio"  style="position: relative;opacity: 100;pointer-events: auto;float: left;margin-right: 7px;margin-top: 4px;"
+             formControlName="type" value="day" name="type" id="type1" />
+            <div for="type1">Diária</div>
+          </div>
+          <div style="width: 33%; float: left">
+              <input type="radio"   style="position: relative;opacity: 100;pointer-events: auto;float: left;margin-right: 7px;margin-top: 4px;"
+              formControlName="type" value="month" name="type" id="type2" />
+              <div for="type2">Mensal</div>
+            </div>
+            <div style="width: 33%; float: left">
+                <input type="radio"   style="position: relative;opacity: 100;pointer-events: auto;float: left;margin-right: 7px;margin-top: 4px;"
+                formControlName="type" value="year" name="type" id="type3" />
+                <div for="type3">Anual</div>
+              </div>            
+        </div>  
+
+  </form>
+
+  
+  <!-- card content -->
+  <div *cardItem="let item">
+    <div class="card-content"> 
+
+    <div>
+      {{ item.name }}  
+      <span class="new badge dark-text"  data-badge-caption="" style="position: absolute;right: 20px;">
+        R$ {{item.goalMonthly}}
+      </span>
+    </div>
+
+    <br clear>
+
+    <div style="margin-top: -15px;font-size: 12px;"> 
+      {{ item.type }}  
+      <span [class]="'new badge dark-text ' + (item.isIncome ? 'cyan' : 'red')"  
+      data-badge-caption="" style="position: absolute;right: 20px;">
+        {{ item.isIncome ? 'RECEITA' : 'DESPESA' }}
+      </span>
+    </div>
+
+    </div>  
+  </div>    
+  
+
+</app-crud>

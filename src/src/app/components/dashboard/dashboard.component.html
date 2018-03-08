@@ -1,0 +1,135 @@
+<!-- floating buttom -->
+<div class="fixed-action-btn" (click)="openModal()">
+  <a class="waves-effect btn-large btn-floating amber">
+    <i class="large material-icons">add</i>
+  </a>
+</div>
+
+<!-- modal -->
+<div #modal class="modal">
+  <div class="modal-content">
+    <h4>{{ categorySelected?.name }}</h4>
+    <p>A bunch of text</p>
+  </div>
+  <div class="modal-footer">
+    <a (click)="save()" class="waves-effect waves-light btn amber">Agree</a>
+  </div>
+</div>
+
+<!-- menu do topo -->
+<nav class="primary-color lighten-1 subnav" role="navigation">
+  <div class="nav-wrapper container" style="width: 100%;">
+    <ul class="right" >
+      <li><a (click)="prevMonth()"><i class="material-icons">navigate_before</i></a></li>
+      <li>
+          <div style="font-weight: bold;">                            
+              <i>{{ this.categoryType != 'year' ? months[month - 1] : '' }}<span class="secondary-text">{{ year }}</span></i>
+          </div>  
+      </li>
+      <li><a (click)="nextMonth()"><i class="material-icons">navigate_next</i></a></li>
+    </ul>
+  </div>
+</nav>
+
+<!-- header info -->
+<div class="card card-row">
+  <div class="card-content card-expense"  (click)="selectHead()" >
+
+    <span style="font-weight: bold;">RECEITA</span> 
+    <span class="new badge amber" data-badge-caption="">{{ incomesSoFar }}/{{ incomesSum }}</span>
+    <div class="progress primary-color-light" style="margin-bottom: 0px;">
+        <div class="determinate primary-color" [style.width]="incomesPercent + '%'"></div>
+    </div>
+
+    <div class="progress secondary-color-light" style="margin-bottom: 7px;" [style.height]="headSelected ? '20px' : ''">
+      <div style="position: absolute;z-index: 2;width: 100%;">RECEITA x DESPESA ATÉ O MOMENTO ({{ expensesSoFar }}/{{ incomesSoFar }})</div>
+      <div 
+      [class]="'determinate ' + soFarColor"
+      [style.width]=" ((expensesSoFar / incomesSoFar) * 100) + '%'"></div>
+    </div>
+    <div class="progress secondary-color-light" style="margin-bottom: 7px;" [style.height]="headSelected ? '20px' : ''">
+        <div style="position: absolute;z-index: 2;width: 100%;">RECEITA x DESPESA TOTAL DO MÊS ({{ expensesSum }}/{{ incomesSum }})</div>
+        <div 
+        [class]="'determinate ' + totalColor"
+        [style.width]=" ((expensesSum / incomesSum) * 100) + '%'"></div>
+    </div>
+
+
+    <div class="progress primary-color-light" style="margin-bottom: 0px;">
+        <div class="determinate primary-color" [style.width]="expensesPercent + '%'"></div>
+    </div>
+    <span style="font-weight: bold;">DESPESA</span>
+    <span class="new badge amber" data-badge-caption="">{{ expensesSum }}/{{ expensesSumGoal }}</span>
+
+  </div>
+</div>
+
+<!-- content info -->
+<div *ngFor="let category of categories" class="card card-row">
+  
+      <div  (click)="selectCategory(category)" 
+      class="card-content card-expense">
+  
+        <span style="font-weight: bold;">{{ category.name }}</span>        
+        <span [class]="'new badge ' + category.goalColor" data-badge-caption="">{{ category.sumExpenses }}/{{ category.goalMonthly }}</span>
+        <div class="progress primary-color-light" style="margin-bottom: 0px;" >
+            <div class="determinate primary-color" [style.width]="category.goalPercent + '%'"></div>
+        </div>
+  
+        <div style="display:flex" *ngIf="category.type == 'day'">
+          <div *ngFor="let categoryWeek of category.weeks; let i = index"  
+          [style.marginLeft]="i != 0 ? '2.5%' : ''"
+          [style.height]="categorySelected == category ? '20px' : ''"
+          class="progress secondary-color-light" 
+          style="margin-bottom: 7px; width: 18%; float: left;">
+              <div style="position: absolute;z-index: 2;width: 100%;text-align: center;">{{ categoryWeek.sumExpenses }}/{{ categoryWeek.goalWeekly }}</div>
+              <div 
+              [class]="'determinate ' + categoryWeek.goalColor"
+              [style.width]="categoryWeek.goalPercent + '%'"></div>
+          </div>
+        </div>
+
+        <div *ngIf="category.type != 'day'">
+          <div *ngFor="let categoryExpense of category.expenses" class="card-action card-expense">
+            {{ categoryExpense.text }}            
+            <span class="new badge dark-text"  data-badge-caption="">
+              R$ {{categoryExpense.value}}
+            </span>
+            <span style="float: left;margin-left: 0px;margin-right: 10px;" class="new badge dark-text"  data-badge-caption="">
+              {{ formatDate(categoryExpense.date) }}
+            </span>
+          </div>
+        </div>
+  
+    </div>
+  </div>
+
+  <div style="margin-bottom: 80px;"></div> 
+
+<!-- content info -->
+<!-- <div *ngFor="let item of items" class="card card-row">
+
+    <div (click)="selectItem(item)"  (dblclick)="openItem(item)" 
+    class="card-content card-expense">
+
+      <span style="font-weight: bold;">{{ item.name }}</span>        
+      <span class="new badge green" data-badge-caption="">1200/7000</span>
+      <div class="progress primary-color-light" style="margin-bottom: 0px;" >
+          <div class="determinate primary-color" style="width: 55%"></div>
+      </div>
+
+      <div style="display:flex">
+        <div *ngFor="let week of weeks"  
+        [style.marginLeft]="week != 0 ? '2.5%' : ''"
+        [style.height]="itemSelected == item ? '20px' : ''"
+        class="progress secondary-color-light" 
+        style="margin-bottom: 7px; width: 18%; float: left;">
+            <div style="position: absolute;z-index: 2;width: 100%;text-align: center;">2200/3200</div>
+            <div class="determinate secondary-color" style="width: 70%"></div>
+        </div>
+      </div>
+
+  </div>
+</div>
+
+<div style="margin-bottom: 80px;"></div> -->
